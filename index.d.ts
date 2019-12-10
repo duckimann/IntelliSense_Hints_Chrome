@@ -475,8 +475,8 @@ declare module "chrome" {
         };
         /**
          * Download a URL. If the URL uses the HTTP[S] protocol, then the request will include all cookies currently set for its hostname.
-         * @param options What to download and how.
-         * @param callback Called with the id of the new DownloadItem.
+         * @param options -What to download and how.
+         * @param callback -Called with the id of the new DownloadItem.
          */
         function download(options: { url: String, filename?: String, conflictAction?: "uniquify" | "overwrite" | "prompt", saveAs?: Boolean, method?: "GET" | "POST", headers?: [{}], body?: String }, callback?: (downloadId: Number) => void): void;
         /**
@@ -513,36 +513,36 @@ declare module "chrome" {
         }, callback: (results: DownloadItem[]) => void): void;
         /**
          * Pause the download.
-         * @param downloadId The id of the download to pause.
-         * @param callback Called when the pause request is completed.
+         * @param downloadId -The id of the download to pause.
+         * @param callback -Called when the pause request is completed.
          */
         function pause(downloadId: Number, callback?: () => void): void;
         /**
          * Resume a paused download.
-         * @param downloadId The id of the download to resume.
-         * @param callback Called when the resume request is completed.
+         * @param downloadId -The id of the download to resume.
+         * @param callback -Called when the resume request is completed.
          */
         function resume(downloadId: Number, callback?: () => void): void;
         /**
          * Cancel a download. 
-         * @param downloadId The id of the download to cancel.
-         * @param callback Called when the cancel request is completed.
+         * @param downloadId -The id of the download to cancel.
+         * @param callback -Called when the cancel request is completed.
          */
         function cancel(downloadId: Number, callback?: () => void): void;
         /**
          * Retrieve an icon for the specified download.
-         * @param downloadId The identifier for the download.
-         * @param callback A URL to an image that represents the download.
+         * @param downloadId -The identifier for the download.
+         * @param callback -A URL to an image that represents the download.
          */
         function getFileIcon(downloadId: Number, options?: {size?: Number}, callback: (iconUrl: String) => void): void;
         /**
          * Open the downloaded file now if the DownloadItem is complete; otherwise returns an error through runtime.lastError.
-         * @param downloadId The identifier for the downloaded file.
+         * @param downloadId -The identifier for the downloaded file.
          */
         function open(downloadId: Number): void;
         /**
          * Show the downloaded file in its folder in a file manager.
-         * @param downloadId The identifier for the downloaded file.
+         * @param downloadId -The identifier for the downloaded file.
          */
         function show(downloadId: Number): void;
         /**
@@ -587,8 +587,8 @@ declare module "chrome" {
         function removeFile(downloadId: Number, callback?: () => void): void;
         /**
          * Prompt the user to accept a dangerous download. 
-         * @param downloadId The identifier for the DownloadItem.
-         * @param callback Called when the danger prompt dialog closes.
+         * @param downloadId -The identifier for the DownloadItem.
+         * @param callback -Called when the danger prompt dialog closes.
          */
         function acceptDanger(downloadId: Number, callback?: () => void): void;
         /**
@@ -623,16 +623,16 @@ declare module "chrome" {
     namespace events {
         /**
          * Registers an event listener callback to an event.
-         * @param callback Called when an event occurs. The parameters of this function depend on the type of event.
+         * @param callback -Called when an event occurs. The parameters of this function depend on the type of event.
          */
         function addListener(callback: () => void): void;
         /**
          * Deregisters an event listener callback from an event.
-         * @param callback Listener that shall be unregistered.
+         * @param callback -Listener that shall be unregistered.
          */
         function removeListener(callback: () => void): void;
         /**
-         * @param callback Listener whose registration status shall be tested.
+         * @param callback -Listener whose registration status shall be tested.
          */
         function hasListener(callback: () => void): void;
         /**
@@ -778,17 +778,17 @@ declare module "chrome" {
         function getProfileUserInfo(callback: (userInfo: {email: String, id: String}) => void): void;
         /**
          * Removes an OAuth2 access token from the Identity API's token cache.
-         * @param details Token information.
+         * @param details -Token information.
          */
         function removeCachedAuthToken(details: {token: String}, callback?: () => void): void;
         /**
          * Starts an auth flow at the specified URL.
-         * @param details WebAuth flow options.
+         * @param details -WebAuth flow options.
          */
         function launchWebAuthFLow(details: {url: String, interactive?: Boolean}, callback: (responseUrl: String) => void): void;
         /**
          * Generates a redirect URL to be used in |launchWebAuthFlow|.
-         * @param path The path appended to the end of the generated URL.
+         * @param path -The path appended to the end of the generated URL.
          */
         function getRedirectURL(path: String): void;
         namespace onSignInChanged {
@@ -812,17 +812,17 @@ declare module "chrome" {
         function getCreationTime(callback: (creationTime: Number) => void): void;
         /**
          * Return a token that allows the authorized entity to access the service defined by scope.
-         * @param getTokenParams Parameters for getToken.
+         * @param getTokenParams -Parameters for getToken.
          */
         function getToken(getTokenParams: {authorizedEntity: String, scope: String, options?: {}}, callback: (token: String) => void): void;
         /**
          * Revokes a granted token.
-         * @param deleteTokenParams Parameters for deleteToken.
+         * @param deleteTokenParams -Parameters for deleteToken.
          */
         function deleteToken(deleteTokenParams: {authorizedEntity: String, scope: String}, callback: () => void): void;
         /**
          * Resets the app instance identifier and revokes all tokens associated with it.
-         * @param callback Function called when the deletion completes. The instance identifier was revoked successfully if runtime.lastError is not set.
+         * @param callback -Function called when the deletion completes. The instance identifier was revoked successfully if runtime.lastError is not set.
          */
         function deleteID(callback: () => void): void;
         namespace onTokenRefresh {
@@ -976,32 +976,32 @@ declare module "chrome" {
         };
         /**
          * Creates and displays a notification.
-         * @param notificationId Identifier of the notification. If not set or empty, an ID will automatically be generated.
-         * @param options Contents of the notification.
-         * @param callback Returns the notification id (either supplied or generated) that represents the created notification.
+         * @param notificationId -Identifier of the notification. If not set or empty, an ID will automatically be generated.
+         * @param options -Contents of the notification.
+         * @param callback -Returns the notification id (either supplied or generated) that represents the created notification.
          */
         function create(notificationId?: String, options: NotificationOptions, callback?: (notificationId: String) => void): void;
         /**
          * Updates an existing notification.
-         * @param notificationId The id of the notification to be updated. This is returned by notifications.create method.
-         * @param options Contents of the notification to update to.
-         * @param callback Called to indicate whether a matching notification existed.
+         * @param notificationId -The id of the notification to be updated. This is returned by notifications.create method.
+         * @param options -Contents of the notification to update to.
+         * @param callback -Called to indicate whether a matching notification existed.
          */
         function update(notificationId: String, options: NotificationOptions, callback?: (wasUpdated: Boolean) => void): void;
         /**
          * Clears the specified notification.
-         * @param notificationId The id of the notification to be cleared. This is returned by notifications.create method.
-         * @param callback Called to indicate whether a matching notification existed.
+         * @param notificationId -The id of the notification to be cleared. This is returned by notifications.create method.
+         * @param callback -Called to indicate whether a matching notification existed.
          */
         function clear(notificationId: String, callback?: (wasCleared: Boolean) => void): void;
         /**
          * Retrieves all the notifications.
-         * @param callback Returns the set of notification_ids currently in the system.
+         * @param callback -Returns the set of notification_ids currently in the system.
          */
         function getAll(callback: (notifications: {}) => void): void;
         /**
          * Retrieves whether the user has enabled notifications from this app or extension.
-         * @param callback Returns the current permission level.
+         * @param callback -Returns the current permission level.
          */
         function getPermissionLevel(callback: (level: "granted" | "denied") => void): void;
         namespace onClosed {
@@ -1088,12 +1088,12 @@ declare module "chrome" {
     namespace pageAction {
         /**
          * Shows the page action. The page action is shown whenever the tab is selected.
-         * @param tabId The id of the tab for which you want to modify the page action.
+         * @param tabId -The id of the tab for which you want to modify the page action.
          */
         function show(tabId: Number, callback?: () => void): void;
         /**
          * Hides the page action. Hidden page actions still appear in the Chrome toolbar, but are grayed out.
-         * @param tabId The id of the tab for which you want to modify the page action.
+         * @param tabId -The id of the tab for which you want to modify the page action.
          */
         function hide(tabId: Number, callback?: () => void): void;
         /**
@@ -1164,19 +1164,19 @@ declare module "chrome" {
         namespace settings {
             /**
              * Gets the value of a setting.
-             * @param details Which setting to consider.
+             * @param details -Which setting to consider.
              */
             function get(details: {incognito?: Boolean}, callback: (details: {value, levelOfControl: "not_controllable" | "controlled_by_other_extensions" | "controllable_by_this_extension" | "controlled_by_this_extension", incognitoSpecific: Boolean}) => void): void;
             /**
              * Sets the value of a setting.
-             * @param details Which setting to change.
-             * @param callback Called at the completion of the set operation.
+             * @param details -Which setting to change.
+             * @param callback -Called at the completion of the set operation.
              */
             function set(details: {value, scope?: "regular" | "regular_only" | "incognito_persistent" | "incognito_session_only"}, callback?: () => void): void;
             /**
              * Clears the setting, restoring any default value.
-             * @param details Which setting to clear.
-             * @param callback Called at the completion of the clear operation.
+             * @param details -Which setting to clear.
+             * @param callback -Called at the completion of the clear operation.
              */
             function clear(details: {scope?: "regular" | "regular_only" | "incognito_persistent" | "incognito_session_only"}, callback?: () => void): void;
         }
@@ -1477,24 +1477,24 @@ declare module "chrome" {
         };
         /**
          * Captures the visible area of the currently active tab. 
-         * @param options Configures the returned media stream.
-         * @param callback Callback with either the tab capture MediaStream or null. null indicates an error has occurred and the client may query chrome.runtime.lastError to access the error details.
+         * @param options -Configures the returned media stream.
+         * @param callback -Callback with either the tab capture MediaStream or null. null indicates an error has occurred and the client may query chrome.runtime.lastError to access the error details.
          */
         function capture(options: CaptureOptions, callback: (stream) => void): void;
         /**
          * Returns a list of tabs that have requested capture or are being captured, i.e. status != stopped and status != error. This allows extensions to inform the user that there is an existing tab capture that would prevent a new tab capture from succeeding (or to prevent redundant requests for the same tab).
-         * @param callback Callback invoked with CaptureInfo[] for captured tabs.
+         * @param callback -Callback invoked with CaptureInfo[] for captured tabs.
          */
         function getCapturedTabs(callback: (results: CaptureInfo[]) => void): void;
         /**
          * Creates an off-screen tab and navigates it to the given |startUrl|. Then, capture is started and a MediaStream is returned via |callback|.
-         * @param options Constraints for the capture and returned MediaStream.
-         * @param callback Callback with either the tab capture MediaStream or null. null indicates an error has occurred and the client may query chrome.runtime.lastError to access the error details.
+         * @param options -Constraints for the capture and returned MediaStream.
+         * @param callback -Callback with either the tab capture MediaStream or null. null indicates an error has occurred and the client may query chrome.runtime.lastError to access the error details.
          */
         function captureOffscreenTab(startUrl: String, options: CaptureOptions, callback: (stream) => void): void;
         /**
          * Creates a stream ID to capture the target tab. Similar to chrome.tabCapture.capture() method, but returns a media stream ID, instead of a media stream, to the consumer tab.
-         * @param callback Callback to invoke with the result. If successful, the result is an opaque string that can be passed to the getUserMedia() API to generate a media stream that corresponds to the target tab. The created streamId can only be used once and expires after a few seconds if it is not used.
+         * @param callback -Callback to invoke with the result. If successful, the result is an opaque string that can be passed to the getUserMedia() API to generate a media stream that corresponds to the target tab. The created streamId can only be used once and expires after a few seconds if it is not used.
          */
         function getMediaStreamId(options?: {consumerTabId?: Number, targetTabId?: Number}, callback: (streamId: String) => void): void;
         namespace onStatusChanged {
