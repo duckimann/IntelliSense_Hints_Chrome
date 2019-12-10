@@ -1796,7 +1796,7 @@ declare module "chrome" {
      */
 	namespace webRequest {
         interface BackParams {
-            urls: ["<all_urls>" | ];
+            urls: ["<all_urls>" | String];
             types: ["main_frame" | "sub_frame" | "stylesheet" | "script" | "image" | "font" | "object" | "xmlhttprequest" | "ping" | "csp_report" | "media" | "websocket" | "other"];
         };
         function handlerBehaviorChanged(callback?: () => void): void;
